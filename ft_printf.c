@@ -52,6 +52,26 @@ void ft_printf(const char* para, ...)
 			num = va_arg(args, int);
 			ft_itoh(num);
 		}
+		else if (para[i] == 'X')
+		{
+			int number;
+			int i = 0;
+			char *hexa_list = ft_itoh(number);
+			number = va_arg(args, int);
+
+			while (hexa_list[i])
+			{
+				ft_toupper(hexa_list[i]);
+				i++;
+			}
+		}
+		else if (para[i] == 'p')
+		{
+			int pointer;
+			pointer = va_arg(args, int);
+			ft_putstr("0x");
+			ft_itoh(pointer);
+		}
 		i++;
 	}
 	va_end(args);
