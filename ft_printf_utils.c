@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/27 11:03:47 by gabdoush          #+#    #+#             */
+/*   Updated: 2021/11/28 11:40:27 by gabdoush         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
+
 
 void     ft_putchar(int c)
 {
@@ -19,24 +32,22 @@ void    ft_putstr(char *s)
 /******************************************************/
 void	ft_putnbr(int n)
 {
-	if (n == -2147483648)
+		if (n <= 2147483647 && n >= -2147483648)
 	{
-		ft_putstr("-2147483648");
-	}
-	else if (n < 0)
-	{
-		ft_putchar('-');
-		n = -1 * n;
-		ft_putnbr(n);
-	}
-	else if (n >= 10)
-	{
-		ft_putnbr(n / 10);
-		ft_putchar(n % 10 + '0');
-	}
-	else if (n < 10)
-	{
-		ft_putchar((char)(n + '0'));
+		if (n < 0)
+		{
+			if (n == -2147483648)
+				return (ft_putstr("-2147483648"));
+			ft_putchar('-');
+			n = n * -1;
+		}
+		if (n <= 9)
+			ft_putchar(n +'0');
+		if (n > 9)
+		{
+			ft_putnbr(n / 10);
+			ft_putnbr(n % 10);
+		}
 	}
 }
 /******************************************************/
@@ -53,128 +64,68 @@ void	ft_putnbr_unsigned(unsigned int n)
 	}
 }
 /******************************************************/
-size_t	ft_strlen(const char *s)
+void	ft_putnbr_x(int n)
 {
-	size_t	n ;
-
-	n = 0;
-	while (s[n] != '\0')
+		if (n <= 2147483647 && n >= -2147483648)
 	{
-		n++;
-	}
-	return (n);
-}
-/******************************************************/
-char	*ft_strjoin_edited(char *hexa_list, char hex)
-{
-	size_t	i;
-	size_t	j;
-	size_t	new_str_len;
-	char	*new_str;
-
-	i = 0;
-
-	new_str_len = ft_strlen(hexa_list) + 1;
-	new_str = (char *)malloc(new_str_len + 1);
-
-	if (!hexa_list || !hex || !new_str)
-		return (0);
-
-
-	while (hexa_list[i] != '\0')
-	{
-		new_str[i] = hexa_list[i];
-		i++;
-	}
-	new_str[i] = hex;
-	i++;
-	new_str[i] = '\0';
-	return (new_str);
-}
-/******************************************************/
-char 	*ft_str_reverse(char *hexa_list)
-{  
-    int		i;
-	int		len;
-	int		temp;
-
-	i = 0;
-    len = ft_strlen(hexa_list);
-
-	while (i < len/2)
-	{
-		temp = hexa_list[i];  
-        hexa_list[i] = hexa_list[len - i - 1];  
-        hexa_list[len - i - 1] = temp;
-		i++;
-	}
-	return (hexa_list);
-}
-/******************************************************/
-char 	*ft_itoh(int num)
-{
-	char *hexa_list = "";
-
-    int dev = 1;
-	float dev_for_rem;
-    double rem;
-    double rem_mult_16;
-    char hex;
-    
-    while (dev > 0)
-    {
-        dev = num / 16;
-		dev_for_rem = (double)num / 16;
-        rem = dev_for_rem - dev;
-		num = dev;
-        rem_mult_16 = rem * 16;
-        if (rem_mult_16 > 9)
-        {
-            if (rem_mult_16 == 10 )
-            {
-                hex = 'a';
-            }
-            else if (rem_mult_16 == 11 )
-            {
-                hex = 'b';
-            }
-            else if (rem_mult_16 == 12 )
-            {
-                hex = 'c';
-            }
-            else if (rem_mult_16 == 13 )
-            {
-                hex = 'd';
-            }
-            else if (rem_mult_16 == 14 )
-            {
-                hex = 'e';
-            }
-            else if (rem_mult_16 == 15 )
-            {
-                hex = 'f';
-            }
-        }
-		else
+		if (n < 0)
 		{
-			hex = rem_mult_16 + '0';
+			if (n == -2147483648)
+				return (ft_putstr("-2147483648"));
+			ft_putchar('-');
+			n = n * -1;
 		}
-		hexa_list = ft_strjoin_edited(hexa_list, hex);
-    }
-	hexa_list = ft_str_reverse(hexa_list);
-	ft_putstr(hexa_list);
-	return (hexa_list);
+		if (n <= 9)
+			ft_putchar(n + '0');
+		if (n > 16)
+		{
+			ft_putnbr_x(n / 16);
+			ft_putnbr_x(n % 16);
+		}
+		if (n > 9 && n < 16)
+		{
+			ft_putchar(n + 87);
+		}
+	}
 }
 /******************************************************/
-int	ft_toupper(int n)
+void	ft_putnbr_X(int n)
 {
-	if (n >= 97 && n <= 122)
+		if (n <= 2147483647 && n >= -2147483648)
 	{
-		return (n - 32);
+		if (n < 0)
+		{
+			if (n == -2147483648)
+				return (ft_putstr("-2147483648"));
+			ft_putchar('-');
+			n = n * -1;
+		}
+		if (n <= 9)
+			ft_putchar(n + '0');
+		if (n > 16)
+		{
+			ft_putnbr_X(n / 16);
+			ft_putnbr_X(n % 16);
+		}
+		if (n > 9 && n < 16)
+		{
+			ft_putchar(n + 55);
+		}
 	}
-	else
-	{
-		return (n);
-	}
+}
+/******************************************************/
+void	ft_putnbr_p(unsigned long long int n)
+{
+		if (n <= 9)
+			ft_putchar(n + '0');
+		if (n > 16)
+		{
+			ft_putnbr_p(n / 16);
+			ft_putnbr_p(n % 16);
+		}
+		if (n > 9 && n < 16)
+		{
+			ft_putchar(n + 87);
+		}
 }
 /******************************************************/

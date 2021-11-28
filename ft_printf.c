@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/27 11:04:22 by gabdoush          #+#    #+#             */
+/*   Updated: 2021/11/28 11:48:19 by gabdoush         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void ft_printf(const char* para, ...)
@@ -16,13 +28,13 @@ void ft_printf(const char* para, ...)
 			d = va_arg(args, int);
 			ft_putnbr(d);
 		}
-		else if(para[i] == 'i')
+		else if (para[i] == 'i')
 		{
 			int i;
 			i = va_arg(args, int);
 			ft_putnbr(i);
 		}
-		else if(para[i] == '%' && para[i+1] == '%')
+		else if (para[i] == '%' && para[i+1] == '%')
 		{
 			int percent;
 			percent = va_arg(args,int);
@@ -40,7 +52,7 @@ void ft_printf(const char* para, ...)
 			c = va_arg(args, int);
 			ft_putchar(c);
 		}
-		else if(para[i] == 's')
+		else if (para[i] == 's')
 		{
 			char *s;
 			s = va_arg(args, char*);
@@ -50,27 +62,20 @@ void ft_printf(const char* para, ...)
 		{
 			int num;
 			num = va_arg(args, int);
-			ft_itoh(num);
+			ft_putnbr_x(num);
 		}
 		else if (para[i] == 'X')
 		{
-			int number;
-			int i = 0;
-			char *hexa_list = ft_itoh(number);
-			number = va_arg(args, int);
-
-			while (hexa_list[i])
-			{
-				ft_toupper(hexa_list[i]);
-				i++;
-			}
+			int num;
+			num = va_arg(args, int);
+			ft_putnbr_X(num);
 		}
 		else if (para[i] == 'p')
 		{
-			int pointer;
-			pointer = va_arg(args, int);
+			unsigned long long int pointer;
+			pointer = va_arg(args, unsigned long long int);
 			ft_putstr("0x");
-			ft_itoh(pointer);
+			ft_putnbr_p(pointer);
 		}
 		i++;
 	}

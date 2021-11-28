@@ -6,9 +6,9 @@ int main()
 {
 	int d = 123;
 	int i = 123456;
-	int x = 90;
-	int X = 90;
-	int p = 90;
+	int x = 12345678;
+	int X = 12345678;
+	unsigned long long int p = 12345678;
 	/**
 	 * The max value for unsigned int is : 4,294,967,295
 	 * if you put 4,294,967,296 
