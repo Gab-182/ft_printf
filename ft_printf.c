@@ -6,14 +6,16 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 11:04:22 by gabdoush          #+#    #+#             */
-/*   Updated: 2021/11/28 20:13:00 by gabdoush         ###   ########.fr       */
+/*   Updated: 2021/11/29 11:26:10 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_printf(const char* para, ...)
+int ft_printf(const char* para, ...)
 {
+	static int len;
+	len = 0;
 	/**
 	 * para ---> is a character pointer that will point to all
 	 * 			 the arguments that will be passed to the ft_printf()
@@ -32,81 +34,122 @@ void ft_printf(const char* para, ...)
 	while (para[i] != '\0')
 	{
 	/********************************/	
-		if (para[i] == ' ')
-		{
-			ft_putchar(' ');
-		}
 		if (para[i] == '%')
 		{
 			i++;
-			int j = i;
-			while (para[j] != '0')
-			{
-				if (para[j] == '%')
-					ft_putchar('%');
-					break;
-				j++;
-			}
-			if (para[i] == ' ')
+			while (para[i] == ' ')
 			{
 				i++;
 			}
-			else if (para[i] == 'd')
+			if (para[i] == '%')
+			{
+				ft_putchar('%', len);
+				i++;
+			}
+			else if (para[i] == 'd' || para[i] == 'i')
 			{
 				int d;
 				d = va_arg(args, int);
-				ft_putnbr(d);
-			}
-			else if (para[i] == 'i')
-			{
-				int i;
-				i = va_arg(args, int);
-				ft_putnbr(i);
+				ft_putnbr(d, len);
+				i++;
 			}
 			else if (para[i] == 'u')
 			{
 				unsigned int u;
 				u = va_arg(args, unsigned int);
-				ft_putnbr_unsigned(u);
+				ft_putnbr_unsigned(u, len);
+				i++;
 			}
 			else if (para[i] == 'c')
 			{
 				int c;
 				c = va_arg(args, int);
-				ft_putchar(c);
+				ft_putchar(c, len);
+				i++;
 			}
 			else if (para[i] == 's')
 			{
 				char *s;
 				s = va_arg(args, char*);
-				ft_putstr(s);
+				ft_putstr(s, len);
+				i++;
 			}
 			else if (para[i] == 'x')
 			{
 				int num;
 				num = va_arg(args, int);
-				ft_putnbr_x(num);
+				ft_putnbr_x(num, len);
+				i++;
 			}
 			else if (para[i] == 'X')
 			{
 				int num;
 				num = va_arg(args, int);
-				ft_putnbr_X(num);
+				ft_putnbr_X(num, len);
+				i++;
 			}
 			else if (para[i] == 'p')
 			{
+				/**
+				 *     <<<<<<<<<<<<<IMPORTANT>>>>>>>>>>>>>
+				 * Check if you need to change the (p) type from
+				 * [unsigned long long int] ----> [void *]
+				 *     <<<<<<<<<<<<<IMPORTANT>>>>>>>>>>>>>
+				*/
 				unsigned long long int pointer;
 				pointer = va_arg(args, unsigned long long int);
-				ft_putstr("0x");
-				ft_putnbr_p(pointer);
+				ft_putstr("0x", len);
+				ft_putnbr_p(pointer, len);
+				i++;
+			}
+			else if (para[i] == '#')
+			{
+				i++;
+				while (para[i] != '\0')
+				{
+					if (para[i] == 'x')
+					{
+						int num;
+						num = va_arg(args, int);
+						ft_putstr("0x", len);
+						ft_putnbr_x(num, len);
+						i++;
+						break;
+					}
+					else if (para[i] == 'X')
+					{
+						int num;
+						num = va_arg(args, int);
+						ft_putstr("0x", len);
+						ft_putnbr_X(num, len);
+						i++;
+						break;
+					}
+					else
+						i++;
+				}
 			}
 		}
+		// else if (para[i] == '\n')
+		// {
+		// 	ft_putchar('\n');
+		// 	i++;
+		// }
+		// else if (para[i] != '%' || para[i] != 'd'|| para[i] != 'i'
+		// 		|| para[i] != 'u'|| para[i] != ' '|| para[i] != 'p'
+		// 		|| para[i] != 'x'|| para[i] != 'X'|| para[i] != 's'
+		// 		|| para[i] != 'c')
+		// {
+		// 	ft_putchar(para[i]);
+		// 	i++;
+		// }
 		else
 		{
-			ft_putchar(para[i]);
+			ft_putchar(para[i], len);
+			i++;
 		}
 	/********************************/
-		i++;
 	}
 	va_end(args);
+	return (len);
 }
