@@ -4,20 +4,20 @@
 
 int main()
 {
- 	int d = 123;
-	int i = 123456;
-	int x = 12345678;
-	int X = 12345678;
-	unsigned long int p = 12345678;
-	/**
-	 * The max value for unsigned int is : 4,294,967,295
-	 * if you put 4,294,967,296 
-	 * there will be a overflow in the value of unsigned int and
-	 * it will print (0).
-	*/
-	unsigned int u = 429496725;
-	char c = 'W';
-	char *s = "  Ghaiath Abdoush  ";
+ 	// int d = -1;
+	// int i = 123456;
+	// int x = -1;
+	// int X = 12345678;
+	// unsigned long int p = 12345678;
+	// /**
+	//  * The max value for unsigned int is : 4,294,967,295
+	//  * if you put 4,294,967,296 
+	//  * there will be a overflow in the value of unsigned int and
+	//  * it will print (0).
+	// */
+	// unsigned int u = 429496725;
+	// char c = 'W';
+	// char *s = NULL;
 
 // /*********** Decimal ************/
 // 	ft_printf("%d 1234123S42134   12341234   12341234     ",d);
@@ -35,10 +35,10 @@ int main()
 // 	printf("%i", 123456);
 // 	printf("\n\n");
 // /*********** String *************/
-// 	ft_printf("%s        ", s);
-// 	printf("\n");
-// 	printf("%s           ", s);
-// 	printf("\n\n");
+	// ft_printf("%s", s);
+	// printf("\n");
+	// printf("%s", s);
+	// printf("\n\n");
 // /****** unsigned integer ********/
 // 	ft_printf("%u", u);
 // 	printf("\n");
@@ -49,38 +49,44 @@ int main()
 // 	printf("\n");
 // 	printf("%%");
 // 	printf("\n\n");
-// /******** hexadecimal x *********/
-// 	ft_printf("%x", x);
-// 	printf("\n");
-// 	printf("%x", x);
-// 	printf("\n\n");
+/******** hexadecimal x *********/
+	// ft_printf("%x", x);
+	// printf("\n\n");
+	// printf("%x", x);
+	// printf("\n");
 // /******** hexadecimal X *********/
 // 	ft_printf("%X", X);
 // 	printf("\n");
 // 	printf("%X", X);
 // 	printf("\n\n");
-// /********* Pointer **************/
-// 	ft_printf("      %p     ",       &p);
-// 	printf("\n");
-// 	printf("      %p     ",       &p);
-// 	printf("\n\n");
+/********* Pointer **************/
+	// ft_printf("%p", d);
+	// printf("\n");
+	// printf("%p", d);
+	// printf("\n\n");
 // /********************************/
-printf("<<<<<<<<<<<<<<<<  TESTING  >>>>>>>>>>>>>>>>>>>\n\n");
-printf("ft_printf is (int) :\n");
-int mine = ft_printf("%d %i\n", d, i);
-printf("\n\n");
-printf("ft_printf is (int) :\n");
-int original = printf("%d %i\n", d, i);
-printf("\n\n");
-printf("ft_printf ---->  %d\nprintf ------->  %d", mine, original);
-printf("\n\n");
-printf("<<<<<<<<<<<<<<<<  TESTING  >>>>>>>>>>>>>>>>>>>\n");
+// printf("<<<<<<<<<<<<<<<<  TESTING  >>>>>>>>>>>>>>>>>>>\n\n");
+// printf("ft_printf is (int) :\n");
 
-// 	ft_printf("123 %% %% WW 123 WW !@# %d %c %s %i %u %x %%  %% %  #  X %p", d, c, str, i, u, x, X, &p);
+// int mine = ft_printf("123 %% %% WW 123 WW%d %c %s %i %u %x %%  %% %#X %p", d, c, s, i, u, x, X, &p);
+
+
+// printf("\n\n");
+// printf("ft_printf is (int) :\n");
+
+// int original = printf("123 %% %% WW 123 WW%d %c %s %i %u %x %%  %% %#X %p", d, c, s, i, u, x, X, &p);
+
+
+// printf("\n\n");
+// printf("ft_printf ---->  %d\nprintf ------->  %d", mine, original);
+// printf("\n\n");
+// printf("<<<<<<<<<<<<<<<<  TESTING  >>>>>>>>>>>>>>>>>>>\n");
+
+// 	ft_printf("123 %% %% WW 123 WW !@# %d %c %s %i %u %x %%  %% %  #  X %p", d, c, s, i, u, x, X, &p);
 // 	printf("\n");
-// 	int g = printf("123 %% %% WW 123 WW !@# %d %c %s %i %u %x %%  %% %  #  X %p", d, c, str, i, u, x, X, &p);
+// 	int g = printf("123 %% %% WW 123 WW !@# %d %c %s %i %u %x %%  %% %  #  X %p", d, c, s, i, u, x, X, &p);
 // 	printf("\n\n");
 
-// 	return (0);
+	return (0);
 
 }
