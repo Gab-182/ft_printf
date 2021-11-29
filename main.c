@@ -67,10 +67,10 @@ int main()
 // /********************************/
 printf("<<<<<<<<<<<<<<<<  TESTING  >>>>>>>>>>>>>>>>>>>\n\n");
 printf("ft_printf is (int) :\n");
-int mine = ft_printf("  12  31  23  12 3 4 5 6 4 5 6 7 8 9 7 8 9 ");
+int mine = ft_printf("%d %i\n", d, i);
 printf("\n\n");
 printf("ft_printf is (int) :\n");
-int original = printf("  12  31  23  12 3 4 5 6 4 5 6 7 8 9 7 8 9 ");
+int original = printf("%d %i\n", d, i);
 printf("\n\n");
 printf("ft_printf ---->  %d\nprintf ------->  %d", mine, original);
 printf("\n\n");

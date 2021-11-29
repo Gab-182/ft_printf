@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 11:04:17 by gabdoush          #+#    #+#             */
-/*   Updated: 2021/11/29 10:20:42 by gabdoush         ###   ########.fr       */
+/*   Updated: 2021/11/29 11:59:05 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int     ft_putchar(int c, int len);
+int     ft_putchar(int c);
 int     ft_putstr(char *s, int len);
 int     ft_putnbr(int n, int len);
 int     ft_putnbr_unsigned(unsigned int n, int len);

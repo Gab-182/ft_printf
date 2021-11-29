@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 11:04:22 by gabdoush          #+#    #+#             */
-/*   Updated: 2021/11/29 11:26:10 by gabdoush         ###   ########.fr       */
+/*   Updated: 2021/11/29 13:47:16 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int ft_printf(const char* para, ...)
 {
-	static int len;
+	int len;
 	len = 0;
 	/**
 	 * para ---> is a character pointer that will point to all
@@ -43,14 +43,14 @@ int ft_printf(const char* para, ...)
 			}
 			if (para[i] == '%')
 			{
-				ft_putchar('%', len);
+				ft_putchar('%');
 				i++;
 			}
 			else if (para[i] == 'd' || para[i] == 'i')
 			{
 				int d;
 				d = va_arg(args, int);
-				ft_putnbr(d, len);
+				len += ft_putnbr(d, len);
 				i++;
 			}
 			else if (para[i] == 'u')
@@ -64,7 +64,7 @@ int ft_printf(const char* para, ...)
 			{
 				int c;
 				c = va_arg(args, int);
-				ft_putchar(c, len);
+				ft_putchar(c);
 				i++;
 			}
 			else if (para[i] == 's')
@@ -130,22 +130,9 @@ int ft_printf(const char* para, ...)
 				}
 			}
 		}
-		// else if (para[i] == '\n')
-		// {
-		// 	ft_putchar('\n');
-		// 	i++;
-		// }
-		// else if (para[i] != '%' || para[i] != 'd'|| para[i] != 'i'
-		// 		|| para[i] != 'u'|| para[i] != ' '|| para[i] != 'p'
-		// 		|| para[i] != 'x'|| para[i] != 'X'|| para[i] != 's'
-		// 		|| para[i] != 'c')
-		// {
-		// 	ft_putchar(para[i]);
-		// 	i++;
-		// }
 		else
 		{
-			ft_putchar(para[i], len);
+			len += ft_putchar(para[i]);
 			i++;
 		}
 	/********************************/
