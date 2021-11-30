@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 11:04:17 by gabdoush          #+#    #+#             */
-/*   Updated: 2021/11/30 05:41:22 by gabdoush         ###   ########.fr       */
+/*   Updated: 2021/11/30 10:04:59 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+/******************************************************************/
 int		ft_putchar(int c);
 int		ft_putstr(char *s);
 int		ft_putnbr(int n);
@@ -26,6 +27,15 @@ int		ft_putnbr_unsigned(unsigned int n);
 int		ft_putnbr_x(unsigned int n);
 int		ft_putnbr_x_upper(unsigned int n);
 int		ft_putnbr_p(unsigned long long int n);
+/******************************************************************/
 int		ft_printf(const char *para, ...);
-
+/******************************************************************/
+int		string_argument(va_list	args, const char *para, int *len);
+int		integer_argument(va_list args, const char *para, int *len);
+int		hex_x_argument(va_list args, const char *para, int *len);
+int		hex_upper_argument(va_list args, const char *para, int *len);
+int		pointer_argument(va_list args, const char *para, int *len);
+int		unsigned_int_argument(va_list args, const char *para, int *len);
+int		character_argument(va_list args, const char *para, int *len);
+/******************************************************************/
 #endif

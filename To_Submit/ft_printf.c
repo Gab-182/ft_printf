@@ -6,106 +6,79 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 11:04:22 by gabdoush          #+#    #+#             */
-/*   Updated: 2021/11/30 04:02:00 by gabdoush         ###   ########.fr       */
+/*   Updated: 2021/11/30 10:09:10 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+
 int	ft_printf(const char *para, ...)
 {
-	static int		len;
-	static int		i;
+	int		l;
+	int		*len;
 	va_list	args;
 
-	len = 0;
+	l = 0;
+	len = &l;
 	va_start (args, para);
-	i = 0;
-	while (para[i] != '\0')
+	while (*para != '\0')
 	{
-		if (para[i] == '%')
+		if (*para == '%')
 		{
-			i++;
-			while (para[i] == ' ')
+			para++;
+			while (*para == ' ')
+				para++;
+			if (*para == '%')
 			{
-				i++;
+				*len += ft_putchar('%');
+				para++;
 			}
-			if (para[i] == '%')
+			else if (*para == 'd' || *para == 'i')
 			{
-				len += ft_putchar('%');
-				i++;
+				integer_argument(args, para, len);
+				para++;
 			}
-			else if (para[i] == 'd' || para[i] == 'i')
+			else if (*para == 'u')
 			{
-				int d;
-				d = va_arg(args, int);
-				len += ft_putnbr(d);
-				i++;
+				*len = unsigned_int_argument(args, para, len);
+				para++;
 			}
-			else if (para[i] == 'u')
+			else if (*para == 'c')
 			{
-				unsigned int u;
-				u = va_arg(args, unsigned int);
-				len += ft_putnbr_unsigned(u);
-				i++;
+				*len = character_argument(args, para, len);
+				para++;
 			}
-			else if (para[i] == 'c')
+			else if (*para == 's')
 			{
-				int c;
-				c = va_arg(args, int);
-				len += ft_putchar(c);
-				i++;
+				para++;
+				*len = string_argument(args, para, len);
 			}
-			else if (para[i] == 's')
+			else if (*para == 'x' || *para == 'X')
 			{
-				char *s;
-				char *str;
-				int j;
-
-				s = va_arg(args, char *);
-				if (!s)
+				if (*para == 'x')
 				{
-					j = 0;
-					str = "(null)";
-					while (j <= 5)
-						len += ft_putchar(str[j++]);
-					i++;
+					para++;
+					*len = hex_x_argument(args, para, len);
 				}
-				else
+				else if (*para == 'X')
 				{
-					len += ft_putstr(s);
-					i++;
+					para++;
+					*len = hex_upper_argument(args, para, len);
 				}
 			}
-			else if (para[i] == 'x')
+			else if (*para == 'p')
 			{
-				int num;
-				num = va_arg(args, int);
-				len += ft_putnbr_x(num);
-				i++;
-			}
-			else if (para[i] == 'X')
-			{
-				int		n;
-				n = va_arg(args, int);
-				len += ft_putnbr_x_upper(n);
-				i++;
-			}
-			else if (para[i] == 'p')
-			{
-				unsigned long long int pointer;
-				pointer = va_arg(args, unsigned long long int);
-				len += ft_putstr("0x");
-				len += ft_putnbr_p(pointer);
-				i++;
+				para++;
+				*len = pointer_argument(args, para, len);
 			}
 		}
 		else
 		{
-			len += ft_putchar(para[i]);
-			i++;
+			*len += ft_putchar(*para);
+			para++;
 		}
 	}
 	va_end(args);
-	return (len);
+	return (*len);
 }
