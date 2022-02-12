@@ -6,61 +6,67 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 11:04:22 by gabdoush          #+#    #+#             */
-/*   Updated: 2021/12/01 00:48:39 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/02/02 16:13:09 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	after_percent(va_list	args, const char *para, int *len)
+int	is_flag(char para)
 {
-	// while (*para == ' ')
-	// 	para++;
-	if (*para == '%')
-		*len += ft_putchar('%');
-	else if (*para == 'd' || *para == 'i')
-		integer_argument(args, para, len);
-	else if (*para == 'u')
-		*len = unsigned_int_argument(args, para, len);
-	else if (*para == 'c')
-		*len = character_argument(args, para, len);
-	else if (*para == 's')
-		*len = string_argument(args, para, len);
-	else if (*para == 'x' || *para == 'X')
-	{
-		if (*para == 'x')
-			*len = hex_x_argument(args, para, len);
-		else if (*para == 'X')
-			*len = hex_upper_argument(args, para, len);
-	}
-	else if (*para == 'p')
-		*len = pointer_argument(args, para, len);
-	return (*len);
+	if (para == 'd' || para == 'i' || para == 'u' || para == 'x'
+		|| para == 'X' || para == 'p' || para == '%'
+		|| para == 'c' || para == 's')
+		  return (0);
+	else
+		return (1);
+}
+
+int	after_percent(va_list args, char para_val)
+{
+	int		len;
+
+	len = 0;
+	if (para_val == '%')
+		len = ft_putchar('%');
+	else if (para_val == 'd' || para_val == 'i')
+		len = integer_argument(args);
+	else if (para_val == 'u')
+		len = unsigned_int_argument(args);
+	else if (para_val == 'c')
+		len = character_argument(args);
+	else if (para_val == 's')
+		len = string_argument(args);
+	else if (para_val == 'x')
+		len = hex_x_argument(args);
+	else if (para_val == 'X')
+		len = hex_upper_argument(args);
+	else if (para_val == 'p')
+		len = pointer_argument(args);
+	return (len);
 }
 
 int	ft_printf(const char *para, ...)
 {
-	int		l;
-	int		*len;
+	int		len;
 	va_list	args;
 
-	l = 0;
-	len = &l;
+	len = 0;
 	va_start (args, para);
 	while (*para != '\0')
-	{
+	{	
 		if (*para == '%')
 		{
 			para++;
-			*len = after_percent(args, para, len);
-			// para++;
+			if (is_flag(*para) == 0)
+				len += after_percent(args, *para);
+			else
+				len += ft_putchar(*para);
 		}
 		else
-		{
-			*len += ft_putchar(*para);
-			para++;
-		}
+			len += ft_putchar(*para);
+		para++;
 	}
 	va_end(args);
-	return (*len);
+	return (len);
 }

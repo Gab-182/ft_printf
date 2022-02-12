@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arguments_2.c                                      :+:      :+:    :+:   */
+/*   integer_argument.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 10:10:21 by gabdoush          #+#    #+#             */
-/*   Updated: 2021/12/03 20:38:48 by gabdoush         ###   ########.fr       */
+/*   Created: 2021/12/13 09:56:25 by gabdoush          #+#    #+#             */
+/*   Updated: 2021/12/15 01:44:05 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	pointer_argument(va_list args, int *len)
+int	integer_argument(va_list args)
 {
-	unsigned long long int		pointer;
+	int		d;
+	int		len;
 
-	pointer = va_arg(args, unsigned long long int);
-	*len += ft_putstr("0x");
-	*len += ft_putnbr_p(pointer);
-	return (*len);
+	len = 0;
+	d = va_arg(args, int);
+	len = ft_putnbr(d);
+	return (len);
 }
-
-int	unsigned_int_argument(va_list args, int *len)
-{
-	unsigned int	u;
-
-	u = va_arg(args, unsigned int);
-	*len += ft_putnbr_unsigned(u);
-	return (*len);
-}
+ 

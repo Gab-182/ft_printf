@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include "ft_printf.h"
 // #include "ft_printf.c"
-// # include "ft_printf_utils.c"
+// # include "ft_printf_utils_1.c"
+// # include "ft_printf_utils_2.c"
+// # include "arguments_1.c"
+// # include "arguments_2.c"
+
 
 int main()
 {
@@ -28,18 +32,24 @@ int main()
 	ft_printf("%+string\n", str);
 	ft_printf("%hello\n", d);
 	ft_printf("%s\n", s);
-	ft_printf("%s\n", "");
-	ft_printf("%s\n", "batya");
+	ft_printf("%s", "");
+	printf("\n");
+	ft_printf(" NULL %s NULL ", NULL);
+	printf("\n");
+	ft_printf("%s ", "");
+	printf("\n");
 
-	ft_printf("\n");
-	int q = ft_printf(" %s %s %s %s %s \n", " - ", "", "4", "", "2 ");
-	int w = printf(" %s %s %s %s %s \n", " - ", "", "4", "", "2 ");
-	printf("ft_printf = %d\nprintf = %d\n", q, w);
+	// ft_printf("%s\n", "batya");
+
+	// ft_printf("\n");
+	// int q = ft_printf(" %s %s %s %s %s \n", " - ", "", "4", "", "2 ");
+	// int w = printf(" %s %s %s %s %s \n", " - ", "", "4", "", "2 ");
+	// printf("ft_printf = %d\nprintf = %d\n", q, w);
 
 // /*********** Decimal ************/
 // 	ft_printf("%d 1234123S42134   12341234   12341234     ",d);
 // 	ft_printf("\n");
-// 	printf("%d 1234123S42134   12341234   12341234 ", d);
+	// printf("%d 1234123S42134   12341234   12341234 ", d);
 // 	printf("\n\n");
 // /************* char *************/
 // 	ft_printf("%c 123412342134   12341234   12341234", c);

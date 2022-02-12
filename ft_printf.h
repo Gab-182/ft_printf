@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 11:04:17 by gabdoush          #+#    #+#             */
-/*   Updated: 2021/11/30 10:41:02 by gabdoush         ###   ########.fr       */
+/*   Updated: 2021/12/03 22:15:40 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,15 @@ int		ft_putnbr_p(unsigned long long int n);
 /******************************************************************/
 int		ft_printf(const char *para, ...);
 /******************************************************************/
-int		string_argument(va_list	args, const char *para, int *len);
-int		integer_argument(va_list args, const char *para, int *len);
-int		hex_x_argument(va_list args, const char *para, int *len);
-int		hex_upper_argument(va_list args, const char *para, int *len);
-int		pointer_argument(va_list args, const char *para, int *len);
-int		unsigned_int_argument(va_list args, const char *para, int *len);
-int		character_argument(va_list args, const char *para, int *len);
+int		string_argument(va_list	args, int *len);
+int		integer_argument(va_list args, int *len);
+int		hex_x_argument(va_list args, int *len);
+int		hex_upper_argument(va_list args, int *len);
+int		pointer_argument(va_list args, int *len);
+int		unsigned_int_argument(va_list args, int *len);
+int		character_argument(va_list args, int *len);
+int		is_flag(char para);
 /******************************************************************/
-int		after_percent(va_list	args, const char *para, int *len);
-
+int		after_percent(va_list	args, char para_val, int *len);
+/******************************************************************/
 #endif

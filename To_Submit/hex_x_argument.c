@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arguments_2.c                                      :+:      :+:    :+:   */
+/*   hex_x_argument.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 10:10:21 by gabdoush          #+#    #+#             */
-/*   Updated: 2021/11/30 10:49:59 by gabdoush         ###   ########.fr       */
+/*   Created: 2021/12/13 09:57:25 by gabdoush          #+#    #+#             */
+/*   Updated: 2021/12/13 15:43:01 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	pointer_argument(va_list args, const char *para, int *len)
+int	hex_x_argument(va_list args)
 {
-	unsigned long long int		pointer;
+	int		num;
+	int		len;
 
-	pointer = va_arg(args, unsigned long long int);
-	*len += ft_putstr("0x");
-	*len += ft_putnbr_p(pointer);
-	para++;
-	return (*len);
-}
-
-int	unsigned_int_argument(va_list args, const char *para, int *len)
-{
-	unsigned int	u;
-
-	u = va_arg(args, unsigned int);
-	*len += ft_putnbr_unsigned(u);
-	para++;
-	return (*len);
+	len = 0;
+	num = va_arg(args, int);
+	len = ft_putnbr_x(num);
+	return (len);
 }
