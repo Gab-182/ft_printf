@@ -1,10 +1,12 @@
+#include <stdio.h>
 #include "ft_printf.h"
 // #include "ft_printf.c"
 // # include "ft_printf_utils.c"
 
 int main()
 {
- 	// int d = -1;
+
+	int d = -1;
 	// int i = 123456;
 	// int x = -1;
 	// int X = 12345678;
@@ -17,12 +19,27 @@ int main()
 	// */
 	// unsigned int u = 429496725;
 	// char c = 'W';
-	// char *s = NULL;
+
+	char *s = NULL;
+	char *str = "hello world";
+
+	ft_printf("%string\n", str);
+	ft_printf("%#string\n", str);
+	ft_printf("%+string\n", str);
+	ft_printf("%hello\n", d);
+	ft_printf("%s\n", s);
+	ft_printf("%s\n", "");
+	ft_printf("%s\n", "batya");
+
+	ft_printf("\n");
+	int q = ft_printf(" %s %s %s %s %s \n", " - ", "", "4", "", "2 ");
+	int w = printf(" %s %s %s %s %s \n", " - ", "", "4", "", "2 ");
+	printf("ft_printf = %d\nprintf = %d\n", q, w);
 
 // /*********** Decimal ************/
 // 	ft_printf("%d 1234123S42134   12341234   12341234     ",d);
 // 	ft_printf("\n");
-// 	printf("%d  1234123S42134   12341234   12341234 ", d);
+// 	printf("%d 1234123S42134   12341234   12341234 ", d);
 // 	printf("\n\n");
 // /************* char *************/
 // 	ft_printf("%c 123412342134   12341234   12341234", c);
@@ -35,10 +52,10 @@ int main()
 // 	printf("%i", 123456);
 // 	printf("\n\n");
 // /*********** String *************/
-	// ft_printf("%s", s);
-	// printf("\n");
-	// printf("%s", s);
-	// printf("\n\n");
+// 	ft_printf("%s", s);
+// 	printf("\n");
+// 	printf("%s", s);
+// 	printf("\n\n");
 // /****** unsigned integer ********/
 // 	ft_printf("%u", u);
 // 	printf("\n");
@@ -49,43 +66,39 @@ int main()
 // 	printf("\n");
 // 	printf("%%");
 // 	printf("\n\n");
-/******** hexadecimal x *********/
-	// ft_printf("%x", x);
-	// printf("\n\n");
-	// printf("%x", x);
-	// printf("\n");
+// /******** hexadecimal x *********/
+// 	ft_printf("%x", x);
+// 	printf("\n\n");
+// 	printf("%x", x);
+// 	printf("\n");
 // /******** hexadecimal X *********/
 // 	ft_printf("%X", X);
 // 	printf("\n");
 // 	printf("%X", X);
 // 	printf("\n\n");
-/********* Pointer **************/
-	// ft_printf("%p", d);
-	// printf("\n");
-	// printf("%p", d);
-	// printf("\n\n");
+// /********* Pointer **************/
+// 	ft_printf("%p", d);
+// 	printf("\n");
+// 	printf("%p", d);
+// 	printf("\n\n");
 // /********************************/
 // printf("<<<<<<<<<<<<<<<<  TESTING  >>>>>>>>>>>>>>>>>>>\n\n");
 // printf("ft_printf is (int) :\n");
 
-// int mine = ft_printf("123 %% %% WW 123 WW%d %c %s %i %u %x %%  %% %#X %p", d, c, s, i, u, x, X, &p);
-
-
+// int mine = ft_printf("123 %% %% WW 123 WW%d %c %s %i %u %x %%  %% %p", d, c, s, i, u, x, &p);
 // printf("\n\n");
 // printf("ft_printf is (int) :\n");
 
-// int original = printf("123 %% %% WW 123 WW%d %c %s %i %u %x %%  %% %#X %p", d, c, s, i, u, x, X, &p);
-
-
+// int original = printf("123 %% %% WW 123 WW% d % c %s %i %u %x %%  %% %p", d, c, s, i, u, x, &p);
 // printf("\n\n");
-// printf("ft_printf ---->  %d\nprintf ------->  %d", mine, original);
+// printf("ft_printf ---->  %d\nprintf ------->  %d\n", mine, original);
 // printf("\n\n");
 // printf("<<<<<<<<<<<<<<<<  TESTING  >>>>>>>>>>>>>>>>>>>\n");
 
-// 	ft_printf("123 %% %% WW 123 WW !@# %d %c %s %i %u %x %%  %% %  #  X %p", d, c, s, i, u, x, X, &p);
-// 	printf("\n");
-// 	int g = printf("123 %% %% WW 123 WW !@# %d %c %s %i %u %x %%  %% %  #  X %p", d, c, s, i, u, x, X, &p);
-// 	printf("\n\n");
+// ft_printf("123 %% %% WW 123 WW !@# %d %c %s %i %u %x %%  %% %p", d, c, s, i, u, x,&p);
+// printf("\n");
+// int g = printf("123 %% %% WW 123 WW !@# %d %c %s %i %u %x %%  %% %p", d, c, s, i, u, x,&p);
+// printf("\n\n");
 
 	return (0);
 

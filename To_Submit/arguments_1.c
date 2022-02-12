@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 10:09:13 by gabdoush          #+#    #+#             */
-/*   Updated: 2021/11/30 10:10:10 by gabdoush         ###   ########.fr       */
+/*   Updated: 2021/12/01 03:04:41 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	string_argument(va_list	args, const char *para, int *len)
 			*len += ft_putchar(str[j++]);
 		para++;
 	}
+	else if (s[0] == '\0')
+		return (-1);
 	else
 	{
 		*len += ft_putstr(s);

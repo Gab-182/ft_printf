@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 10:09:13 by gabdoush          #+#    #+#             */
-/*   Updated: 2021/11/30 10:10:10 by gabdoush         ###   ########.fr       */
+/*   Updated: 2021/12/01 04:04:44 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,12 @@ int	string_argument(va_list	args, const char *para, int *len)
 {
 	char	*s;
 	char	*str;
-	int		j;
 
 	s = va_arg(args, char *);
 	if (!s)
 	{
-		j = 0;
 		str = "(null)";
-		while (j <= 5)
-			*len += ft_putchar(str[j++]);
+		*len += ft_putstr(str);
 		para++;
 	}
 	else

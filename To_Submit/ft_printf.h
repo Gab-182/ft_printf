@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 11:04:17 by gabdoush          #+#    #+#             */
-/*   Updated: 2021/11/30 10:04:59 by gabdoush         ###   ########.fr       */
+/*   Updated: 2021/11/30 10:41:02 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,6 @@ int		pointer_argument(va_list args, const char *para, int *len);
 int		unsigned_int_argument(va_list args, const char *para, int *len);
 int		character_argument(va_list args, const char *para, int *len);
 /******************************************************************/
+int		after_percent(va_list	args, const char *para, int *len);
+
 #endif
