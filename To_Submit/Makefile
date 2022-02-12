@@ -6,7 +6,11 @@
 #    By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 01:38:46 by gabdoush          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2021/12/14 02:24:29 by gabdoush         ###   ########.fr        #
+=======
+#    Updated: 2021/12/23 03:44:15 by gabdoush         ###   ########.fr        #
+>>>>>>> 1e22491c2c7da4f01d77153a4d57e9a3fdd94bb8
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,10 +51,15 @@ fclean: clean
 	/bin/rm -f  $(NAME)
 
 bonus: all
+<<<<<<< HEAD
 
 re: fclean all
 
 #%.o: %.c
 #	$(CC) $< -I $(HEADERS) -o $@ 
+=======
+
+re: fclean all
+>>>>>>> 1e22491c2c7da4f01d77153a4d57e9a3fdd94bb8
 
 .PHONY:	all clean fclean re
